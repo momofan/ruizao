@@ -1,1 +1,122 @@
 
+<!DOCTYPE html>
+<html mip>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>MIP 评论功能实现</title>
+    <link rel="stylesheet" type="text/css" href="https://mipcache.bdstatic.com/static/v1/mip.css">
+    <link rel="canonical" href="http://www.lipinrui.com/mip/mip-comment.html">
+    <style mip-custom>
+        .icon_praise{}
+    </style>
+    <script type="application/json" mip-access id="mip-access">
+        {
+            "authorization": "https://www.mipengine.org/samples-templates/mip-access/authorization?rid=READER_ID&canonical_url=CANONICAL_URL",
+            "pingback": "https://www.mipengine.org/samples-templates/mip-access/pingback?rid=READER_ID&canonical_url=CANONICAL_URL",
+            "login": {
+                "login": "https://www.mipengine.org/samples-templates/mip-access/login",
+                "logout": "https://www.mipengine.org/samples-templates/mip-access/logout"
+            },
+            "authorizationFallbackResponse": {
+                "error": true,
+                "access": true,
+                "login": false
+            },
+            "hideType": 0
+        }
+    </script>
+</head>
+<body>
+<mip-data>
+    <script type="application/json">
+    {
+        "name": "张三",
+        "mid": "",
+        "placeholder":"default"
+    }
+    </script>
+</mip-data>
+
+<mip-list synchronous-data>
+    <script type="application/json">
+        {
+            "items": [
+                {
+                    "name": "lee",
+                    "alias": "这么花钱，应该听证！"
+                }, {
+                    "name": "ruige",
+                    "alias": "这么花钱，应该听证！"
+                }, {
+                    "name": "langbo",
+                    "alias": "这么花钱，应该听证！"
+                }
+            ]
+        }
+    </script>
+    <template type="mip-mustache">
+        <section class="com_box j_cmnt_box" data-nick="sumelong_e670d4" data-newsid="comos-fyrvnsx0273997" data-channel="gn" data-mid="5A95E038-72FAB6A7-61E797EE-9F0-83C" data-replynum="0">
+            <figure class="com_img">
+                <img class="img_width" src="https://tvax3.sinaimg.cn/default/images/default_avatar_male_50.gif" alt="">
+            </figure>
+            <aside>
+                <div class="com_cite">
+                    <strong class="com_name j_com_name">{{name}}</strong>
+                    <time class="com_time"><cite class="com_cite_p">12小时前</cite><cite class="com_cite_p">北京</cite></time>
+                    
+                        <aside class="cm_c_c com_unit"><span class="com_good icon_message j_favor_single"><span class="com_ic icon_praise" id="login" on="tap:mip-access.login">点赞</span><em class="com_good_num">450</em></span><span class="com_ic icon_com icon_message j_cmnt_single"></span></aside>
+                        <span class="logout" id="logout" on="tap:mip-access.logout" mip-access="subscriber" mip-access-hide>登出</span>
+                    
+                </div>
+                <span class="com_content j_com_content">
+                    <span class="j_con_txt con_txt">{{alias}}</span>
+                    <em class="com_report hide">举报</em>
+                </span>
+                
+            </aside>
+            <button on="tap:my-lightbox.toggle tap:MIP.setData({placeholder:'回复{{name}}:'})" id="btn-open" role="button" tabindex="0">
+    回复评论
+</button>
+        </section>
+
+    </template>
+</mip-list>
+<span class="login" id="login" on="tap:mip-access.login" mip-access="NOT subscriber" mip-access-hide>登录</span>
+                <span class="logout" id="logout" on="tap:mip-access.logout" mip-access="subscriber" mip-access-hide>登出</span>
+
+
+
+<mip-lightbox
+    id="my-lightbox"
+    layout="nodisplay"
+    class="mip-hidden">
+<mip-form fetch-url="http://yourdomain.com/path">
+    <input type="text" name="content" m-bind:placeholder="placeholder">
+    <input type="hidden" name="mid" m-bind:value="mid">
+    <input type="hidden" name="channel" value="gn">
+    <div submit-success>
+        <template type="mip-mustache">
+            Success! Thanks for {{name}} trying the mip demo.
+        </template>
+    </div>
+    <div submit-error>
+        <template type="mip-mustache">
+            Error!.
+        </template>
+    </div>
+    <input type="submit" value="提交">
+</mip-form>
+</mip-lightbox>
+    
+   <input type="file">
+    
+<script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-list/mip-list.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-mustache/mip-mustache.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-access/mip-access.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-lightbox/mip-lightbox.js"></script>
+<script src="https://c.mipcdn.com/static/v1/mip-bind/mip-bind.js"></script>
+</body>
+</html>
